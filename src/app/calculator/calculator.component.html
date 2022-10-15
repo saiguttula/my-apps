@@ -1,0 +1,40 @@
+
+<section class="h-100 w-100 d-flex flex-row justify-content-center align-items-center">
+  <div class="standard">
+    <div style="width:300px;height:200px;" class="d-flex flex-column justify-content-end align-items-end">
+      <p *ngIf="value===''" class="text-white fw-medium" style="font-size: 52px; margin-right: 20px; margin-left: 20px;margin-bottom: 25px;">0</p>
+      <p *ngIf="value!==''" class="text-white fw-medium" style="font-size: 52px; margin-right: 20px; margin-left: 20px;margin-bottom: 25px;">{{value}}</p>
+    </div>
+    <div>
+      <div>
+        <button class="round-btn fs-3 bg-secondary" (click)="onClick('AC')">AC</button>
+        <button class="round-btn fs-3 bg-secondary" (click)="onClick('+/-')">+/-</button>
+        <button class="round-btn fs-3 bg-secondary" (click)="onClick('%')">%</button>
+        <button class="round-btn fs-3 text-white" style="background-color: orange;" (click)="onClick('/')">÷</button>
+      </div>
+      <div>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('7')">7</button>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('8')">8</button>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('9')">9</button>
+        <button class="round-btn fs-3 text-white" style="background-color: orange;" (click)="onClick('*')">x</button>
+      </div>
+      <div>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('4')">4</button>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('5')">5</button>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('6')">6</button>
+        <button class="round-btn text-white fs-3" style="background-color: orange;" (click)="onClick('-')">-</button>
+      </div>
+      <div>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('1')">1</button>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('2')">2</button>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('3')">3</button>
+        <button class="round-btn text-white fs-3" style="background-color: orange;" (click)="onClick('+')">+</button>
+      </div>
+      <div>
+        <button class="round-btn bg-dark text-white fs-3" style="width: 135px; border-radius: 50px;" (click)="onClick('0')">0</button>
+        <button class="round-btn bg-dark text-white fs-3" (click)="onClick('.')">.</button>
+        <button class="round-btn fs-3 text-white" style="background-color: orange;" (click)="onClick('=')">=</button>
+      </div>
+    </div>
+  </div>
+</section>

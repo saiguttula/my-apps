@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.round-btn{
+  width: 60px;
+  height: 60px;
+  border: 0;
+  border-radius: 50%;
+  margin: 7px;
+}
+
+.standard{
+  background-color: #000000;
+  border-radius: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 50px;
+}
+
+button:active{
+  border: 1px solid silver;
+  box-shadow: 1px 1px 10px 0px #ffffff;
+}
