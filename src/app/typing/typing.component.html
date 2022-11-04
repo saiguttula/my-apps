@@ -1,0 +1,29 @@
+
+<div class="area" >
+  <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+  </ul>
+</div>
+
+<section class="context">
+  <div class="text-center mt-5"> <p class=" fs-1 fw-bolder text-white">Typing Test Game</p> <p class=" fs-1 fw-bolder text-white" style="position: absolute;right:40px;top:40px;">Time: {{time}}</p> </div>
+  <div class="mx-5">
+    <p class="fs-5 fw-medium text-white" style="line-height: 1.5;"><span style="background-color: yellow;">{{prevText}}</span><span style="background-color: transparent;">{{nextText}}</span></p>
+  </div>
+  <div [ngStyle]="{'background-color': containerBgColor}" class="text-area-container mb-5 d-flex flex-row justify-content-center align-items-center">
+    <textarea [(ngModel)]="usertext" type="text" style="height: 15vh;width: 88vw;font-size: 18px;" (input)="onKeyPress()"></textarea>
+  </div>
+</section>
+
+<section class="mobile text-center">
+  <p class="fw-bolder text-white fs-1">Please use a Laptop/Desktop inorder to use this application</p>
+</section>

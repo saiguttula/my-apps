@@ -1,0 +1,17 @@
+<div class="text-center">
+  <p class="fs-1 fw-bolder">Your Score: {{data.score}}</p>
+</div>
+<div>
+  <div *ngIf="data.score<40" class="text-center bg-danger my-5 d-flex flex-row justify-content-center align-items-center" style="height: 60px;">
+    <p class=" text-white fs-1 fw-bolder">Average</p>
+  </div>
+  <div *ngIf="data.score>40 && data.score<60" class="text-center bg-warning my-5 d-flex flex-row justify-content-center align-items-center" style="height: 60px;">
+    <p class=" text-white fs-1 fw-bolder">Good</p>
+  </div>
+  <div *ngIf="data.score>60" class="text-center bg-success my-5 d-flex flex-row justify-content-center align-items-center" style="height: 60px;">
+    <p class=" text-white fs-1 fw-bolder">Excellent</p>
+  </div>
+</div>
+<div class="text-center">
+  <button class="btn btn-primary" (click)="onClickPlayAgain()">play again</button>
+</div>

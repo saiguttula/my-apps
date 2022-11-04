@@ -1,1 +1,23 @@
-<p>home works!</p>
+
+<section class="d-flex flex-row justify-content-start align-items-start">
+  <a [routerLink]="['/calculator']" style="text-decoration: none;">
+    <mat-card class="m-5 p-4" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <img style="width: 80px;" src="https://pngimg.com/uploads/calculator/calculator_PNG102230.png" alt="">
+      </div>
+      <div class="text-center mt-3">
+        <p class="fw-bolder fs-1">Calculator</p>
+      </div>
+    </mat-card>
+  </a>
+  <a [routerLink]="['/typing']" style="text-decoration: none;">
+    <mat-card class="m-5 p-4" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+      <div class="d-flex flex-row justify-content-center align-items-center">
+        <img style="width: 80px;" src="https://banner2.cleanpng.com/20180214/wcw/kisspng-computer-keyboard-typing-clip-art-typing-pictures-5a848430e72ea6.2055797915186340329469.jpg" alt="">
+      </div>
+      <div class="text-center mt-3">
+        <p class="fw-bolder fs-1">Typing Test</p>
+      </div>
+    </mat-card>
+  </a>
+</section>

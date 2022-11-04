@@ -10,6 +10,14 @@ const routes: Routes = [
   {
     path:'calculator',
     loadChildren: () => import('./calculator/calculator.module').then(m => m.CalculatorModule)
+  },
+  {
+    path:'typing',
+    loadChildren: () => import('./typing/typing.module').then(m => m.TypingModule)
+  },
+  {
+    path:'population',
+    loadChildren: () => import('./population/population.module').then(m => m.PopulationModule)
   }
 ];
 
