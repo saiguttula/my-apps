@@ -1,4 +1,72 @@
-
-<section style="width:100vw;height:100vh">
-  <div echarts [options]="option" ></div>
+<section>
+  <div class="d-flex flex-row justify-content-center align-items-end">
+    <div class="form-group">
+      <label for="limit">Enter Limit</label>
+      <input
+        id="limit"
+        type="number"
+        class="form-control"
+        [(ngModel)]="limit"
+      />
+    </div>
+    <div>
+      <button class="btn btn-primary" (click)="onChangeLimit()">Show</button>
+    </div>
+  </div>
+  <div class="d-flex flex-row justify-content-around align-items-start mt-4">
+    <div class="d-flex flex-column">
+      <div class="text-center">
+        <p class="fw-bolder fs-1">Pie</p>
+      </div>
+      <div>
+        <div *ngIf="onToggle">
+          <div echarts [options]="donutOption" style="width: 700px"></div>
+        </div>
+        <div *ngIf="!onToggle">
+          <div echarts [options]="donutOption" style="width: 700px"></div>
+        </div>
+      </div>
+      <div style="width: 710px">
+        <div class="text-center">
+          <p class="fw-bolder fs-1">Bar</p>
+        </div>
+        <div *ngIf="onToggle">
+          <div
+            echarts
+            [options]="option"
+            style="width: 700px; height: 500px"
+          ></div>
+        </div>
+        <div *ngIf="!onToggle">
+          <div
+            echarts
+            [options]="option"
+            style="width: 700px; height: 500px"
+          ></div>
+        </div>
+    </div>
+    </div>
+    <div class="d-flex flex-column align-items-center">
+      <div class="text-center">
+        <p class="fw-bolder fs-1">Table</p>
+      </div>
+      <p-table [value]="selectedData" [scrollable]="true" styleClass="p-datatable-gridlines" scrollHeight="95vh" [lazy]="true">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:200px">Country</th>
+                <th style="min-width:200px">Population</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td style="min-width:200px">{{customer.country}}</td>
+                <td style="min-width:200px">{{customer.population}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <p class="fw-bold fs-1">Showing top <span style="color: red;">{{limit}}</span> Countries population list</p>
+  </div>
 </section>

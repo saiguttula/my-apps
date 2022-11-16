@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { EChartsOption } from 'echarts';
 
 @Component({
@@ -6,6 +6,8 @@ import { EChartsOption } from 'echarts';
   templateUrl: './population.component.html',
   styleUrls: ['./population.component.scss']
 })
+
+@Injectable()
 export class PopulationComponent implements OnInit {
 
   constructor() { }
@@ -996,32 +998,34 @@ export class PopulationComponent implements OnInit {
     }
 ]
 
+@Input() limit:number|string=10;
+sortedData:any = this.populationData.sort((a,b)=>a.population >b.population?-1:1);
+selectedData:any = this.sortedData.slice(0,+this.limit);
+onToggle:boolean = false;
+
 option:EChartsOption = {
-  dataset: {
-    source: [
-      ['score', 'amount', 'product'],
-      [89.3, 58212, 'Matcha Latte'],
-      [57.1, 78254, 'Milk Tea'],
-      [74.4, 41032, 'Cheese Cocoa'],
-      [50.1, 12755, 'Cheese Brownie'],
-      [89.7, 20145, 'Matcha Cocoa'],
-      [68.1, 79146, 'Tea'],
-      [19.6, 91852, 'Orange Juice'],
-      [10.6, 101852, 'Lemon Juice'],
-      [32.7, 20112, 'Walnut Brownie']
-    ]
+  dataset:[{
+    dimensions: ["country","population"],
+    source: this.selectedData
   },
+  {
+    transform: {
+      type: 'sort',
+      config: { dimension: 'population', order: 'asc' }
+    }
+  }
+],
   grid: { containLabel: true },
-  xAxis: { name: 'amount' },
-  yAxis: { type: 'category' },
+  xAxis: { name: 'population' },
+  yAxis: { name: 'country',type:'category'},
   visualMap: {
     orient: 'horizontal',
     left: 'center',
     min: 10,
-    max: 100,
+    max: 1500000000,
     text: ['High Score', 'Low Score'],
     // Map the score column to color
-    dimension: 0,
+    dimension: 1,
     inRange: {
       color: ['#65B581', '#FFCE34', '#FD665F']
     }
@@ -1031,12 +1035,79 @@ option:EChartsOption = {
       type: 'bar',
       encode: {
         // Map the "amount" column to X axis.
-        x: 'amount',
+        x: 'population',
         // Map the "product" column to Y axis
-        y: 'product'
+        y: 'country'
+      },
+      datasetIndex: 1
+    }
+  ]
+};
+
+donutData = this.selectedData.map((item:any)=> {
+  return {name:item.country,value:item.population}
+})
+
+donutOption:EChartsOption = {
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left'
+  },
+  series: [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: '50%',
+      data: this.donutData,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
       }
     }
   ]
 };
+
+
+onChangeLimit(){
+  this.selectedData = this.sortedData.slice(0,+this.limit);
+  this.donutData = this.selectedData.map((item:any)=> {
+    return {name:item.country,value:item.population}
+  })
+  console.log(this.selectedData,);
+  console.log(this.donutData);
+  this.onToggle = !this.onToggle;
+  this.option.dataset = [{
+    dimensions: ["country","population"],
+    source: this.selectedData
+  },
+  {
+    transform: {
+      type: 'sort',
+      config: { dimension: 'population', order: 'asc' }
+    }
+  }]
+  this.donutOption.series = [
+    {
+      name: 'Access From',
+      type: 'pie',
+      radius: '50%',
+      data: this.donutData,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+
+}
 
 }
