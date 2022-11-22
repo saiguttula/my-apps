@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path:'population',
     loadChildren: () => import('./population/population.module').then(m => m.PopulationModule)
+  },
+  {
+    path:'weather',
+    loadChildren: () => import('./weather-app/weather-app.module').then(m => m.WeatherAppModule)
   }
 ];
 

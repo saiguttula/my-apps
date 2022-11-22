@@ -1,0 +1,45 @@
+<section [ngStyle]="{'background': data? bgUrl : 'url('+'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg'+')','background-repeat': 'no-repeat','background-size':'cover','filter': 'brightness(65%)','width': '100vw'
+,'height': '100vh'}"></section>
+
+<section style="position: fixed;right: 0;top: 0;bottom: 0;"
+    [ngStyle]="{'background':  data? bgUrl :'url('+'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg'+')','background-repeat': 'no-repeat','background-size':'cover','filter': 'brightness(50%) blur(15px)','width': '35vw','height': '100vh'}">
+</section>
+
+<section class="home">
+    <section class="no-data-section" *ngIf="!!!data">
+        <h1 style="font-size: 36px; font-weight: bold;">Welcome to Weather Application</h1>
+        <h3>Please choose one location</h3>
+    </section>
+    <section class="data-section" *ngIf="!!data">
+        <h1 style="font-size: 82px;font-weight:bold;">{{temp}}<sup>o</sup></h1>
+        <div class="d-flex flex-column justify-content-center align-items-start" style="margin-left: 30px !important;">
+            <h1 style="border-bottom: 0;font-size: 36;font-weight: bold;">{{city}}</h1>
+            <p style="border-bottom: 0;">{{time}}-{{date}}</p>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-start" style="margin-left: 30px !important;">
+            <img [src]="icon" alt="img">
+            <p style="border-bottom: 0;">{{condition}}</p>
+        </div>
+    </section>
+</section>
+
+<section class="location-section">
+    <div class="d-flex flex-row justify-content-center align-items-center mt-5">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>City</mat-label>
+            <input [(ngModel)]="name" matInput placeholder="Ex. San Francisco">
+        </mat-form-field>
+        <button style="margin-left: 15px !important;" mat-raised-button color="primary" (click)="getConditionByName()">Search</button>
+    </div>
+    <hr style="color: #ffffff; width: 100%;">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-4">
+        <h3 *ngFor="let city of citiesList" class="text-white" (click)="onSelectLocation(city)" style="cursor: pointer;">{{city}}</h3>
+    </div>
+    <hr style="color: #ffffff; width: 100%;">
+    <div class="d-flex flex-column justify-content-center align-items-center mt-5 text-white" *ngIf="!!data">
+        <h3>Feels Like: {{feelsLike}}</h3>
+        <h3>Humidity: {{humidity}}</h3>
+        <h3>Description: {{description}}</h3>
+        <h3>Wind Speed: {{windSpeed}}</h3>
+    </div>
+</section>

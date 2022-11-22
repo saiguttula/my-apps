@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.home{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-left: 120px;
+    padding-bottom: 80px;
+}
+
+.no-data-section{
+    filter: brightness(100%) !important;
+    color: #ffffff;
+}
+
+.data-section{
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.location-section{
+    position: fixed;
+    width: 35vw;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+:host ::ng-deep .mat-input-element{
+    color: #ffffff !important;
+}
